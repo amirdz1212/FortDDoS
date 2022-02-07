@@ -237,6 +237,25 @@ class DNSQuery:
             packet+='\x00\x01\x00\x01\x00\x00\x00\x3c\x00\x04'             # Response type, ttl and resource data length -> 4 bytes
             packet+=str.join('',map(lambda x: chr(int(x)), ip.split('.'))) # 4bytes of IP
         return packet
+ 
+ ​class​ ​Proxy​: 
+ ​    ​port​: ​int 
+ ​    ​host​: ​str 
+ ​    ​typeInt​: ​int 
+  
+ ​    ​def​ ​__init__​(​self​, ​host​: ​str​, ​port​: ​int​, ​typeInt​: ​int​) ​->​ ​None​: 
+ ​        ​self​.​host​ ​=​ ​host 
+ ​        ​self​.​port​ ​=​ ​port 
+ ​        ​self​.​typeInt​ ​=​ ​typeInt 
+ ​        ​self​.​_typeName​ ​=​ ​"SOCKS4"​ ​if​ ​typeInt​ ​==​ ​4​ ​else​ \ 
+ ​            ​"SOCKS5"​ ​if​ ​typeInt​ ​==​ ​5​ ​else​ \ 
+ ​                ​"HTTP" 
+  
+ ​    ​def​ ​__str__​(​self​): 
+ ​        ​return​ ​"%s:%d"​ ​%​ (​self​.​host​, ​self​.​port​) 
+  
+ ​    ​def​ ​__repr__​(​self​): 
+ ​        ​return​ ​"%s:%d"​ ​%​ (​self​.​host​, ​self​.​port​)
 
 
 
