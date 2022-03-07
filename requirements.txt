@@ -1,6 +1,8 @@
-requests
-pysocks
-socks
-cfscrape
-icmplib
-scapy
+cfscrape<=2.1.1
+certifi<=2021.10.8
+requests==2.27.1
+impacket>=0.9.24
+psutil>=5.9.0
+icmplib>=2.1.1
+git+https://github.com/Xoosz/PyRoxy.git
+yarl~=1.7.2
